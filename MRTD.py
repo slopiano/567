@@ -13,7 +13,7 @@ def scan_MRZ():
     f = open('samples.json')
     data = json.load(f)
     # This function loads the given sample from the json file
-    passport_string = data['givenSample']
+    passport_string = data.get("sample3", [])
     f.close()
 
 def decode_string():
