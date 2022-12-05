@@ -71,7 +71,6 @@ def incode_string():
     # This will most likely be removed in the future, for now
     # it's here just to show that the function works properly
     passport_string = [top_string, bottom_string]
-    print(passport_string)
 
 def checksum(check_string):
     """ Performs the checksum function """
@@ -85,16 +84,16 @@ def checksum(check_string):
         elif char.isnumeric():
             check+= (int(char) * weight[idx])
         else:
-            check += (ord(char) - ord('A') + 10) * weight[idx]
+            check += (ord(char) - ord('A')) * weight[idx]
         idx+=1
     check = check%10
     return check
 
-def check_passport():
-    print(str(checksum(passport_class.pass_num)) + ':' + str(passport_class.check_pass_num))
-    print(str(checksum(passport_class.birth_date)) + ':' + str(passport_class.check_birth_date))
-    print(str(checksum(passport_class.expiration)) + ':' + str(passport_class.check_expiration))
-    print(str(checksum(passport_class.personal_number)) + ':' + str(passport_class.check_personal_number))
+# def check_passport():
+#     print(str(checksum(passport_class.pass_num)) + ':' + str(passport_class.check_pass_num))
+#     print(str(checksum(passport_class.birth_date)) + ':' + str(passport_class.check_birth_date))
+#     print(str(checksum(passport_class.expiration)) + ':' + str(passport_class.check_expiration))
+#     print(str(checksum(passport_class.personal_number)) + ':' + str(passport_class.check_personal_number))
 
 # Driver code
 if __name__ == '__main__':

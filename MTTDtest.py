@@ -47,7 +47,6 @@ class TestForErrors(unittest.TestCase):
         MRTD.passport_class.personal_number = "668035532"
         MRTD.passport_class.check_personal_number = 8
         MRTD.passport_class.final_check = 4
-        MRTD.passport_class.print_variables()
         incode_string()
         assert MRTD.passport_string == ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
         assert len(MRTD.passport_string[0]) == 44
@@ -69,7 +68,6 @@ class TestForErrors(unittest.TestCase):
         MRTD.passport_class.check_personal_number = 2
         MRTD.passport_class.final_check = 8
         incode_string()
-        MRTD.passport_class.print_variables()
         assert MRTD.passport_string == ["P<GBRWEBER<<DIANE<<<<<<<<<<<<<<<<<<<<<<<<<<<", "2808770437GBR8809117F1601013424533186<<<<<28"]
         assert len(MRTD.passport_string[0]) == 44
         assert len(MRTD.passport_string[1]) == 44
@@ -80,6 +78,7 @@ class TestForErrors(unittest.TestCase):
         assert checksum("23OI40KJDN239") == 8
         assert checksum("98JHVD972490KJBHSAKJNL9874359876BKJHV") == 8
         assert checksum("98JHVD972490KJBHSAKJNL9874359876BKJHV<<<") == 8
+        assert checksum("ABADSFIUHBADSIKUVAJBSDIUYV") == 9
 
 if __name__ == '__main__':
     unittest.main()
