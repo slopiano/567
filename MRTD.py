@@ -103,4 +103,4 @@ if __name__ == '__main__':
     passport_class.print_variables()
     incode_string()
     print(passport_string)
-    check_passport()
+    # check_passport()
