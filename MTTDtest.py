@@ -71,6 +71,8 @@ class TestForErrors(unittest.TestCase):
         incode_string()
         MRTD.passport_class.print_variables()
         assert MRTD.passport_string == ["P<GBRWEBER<<DIANE<<<<<<<<<<<<<<<<<<<<<<<<<<<", "2808770437GBR8809117F1601013424533186<<<<<28"]
+        assert len(MRTD.passport_string[0]) == 44
+        assert len(MRTD.passport_string[1]) == 44
 
     def test_checksum(self):
         assert checksum("255346242") == 1
