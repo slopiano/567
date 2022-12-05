@@ -13,7 +13,7 @@ def scan_MRZ():
     f = open('samples.json')
     data = json.load(f)
     # This function loads the given sample from the json file
-    passport_string = data.get("sample3", [])
+    passport_string = data.get("sample2", [])
     f.close()
 
 def decode_string():
@@ -71,6 +71,7 @@ def incode_string():
     # This will most likely be removed in the future, for now
     # it's here just to show that the function works properly
     passport_string = [top_string, bottom_string]
+    print(passport_string)
 
 def checksum(check_string):
     """ Performs the checksum function """
