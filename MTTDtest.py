@@ -7,13 +7,13 @@ from MRTD import scan_MRZ, decode_string, incode_string, checksum
 class TestForErrors(unittest.TestCase):
     def test_scan_MRZ(self):
         json = Mock()
-        json.load.get.return_value = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
+        json.load.get.return_value = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<<8"]
         scan_MRZ()
-        passport_string = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
-        assert passport_string == ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
+        passport_string = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<<8"]
+        assert passport_string == ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<<8"]
 
     def test_decode_string(self):
-        MRTD.passport_string = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
+        MRTD.passport_string = ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<<8"]
         decode_string()
         assert MRTD.passport_class.d_type == "P"
         assert MRTD.passport_class.c_code_top == "GBR"
@@ -28,7 +28,7 @@ class TestForErrors(unittest.TestCase):
         assert MRTD.passport_class.expiration == "160101"
         assert MRTD.passport_class.check_expiration == 3
         assert MRTD.passport_class.personal_number == "668035532"
-        assert MRTD.passport_class.final_check == 4
+        assert MRTD.passport_class.check_personal_number == 8
 
     def test_incode_string(self):
         MRTD.passport_class.d_type = "P"
@@ -46,9 +46,8 @@ class TestForErrors(unittest.TestCase):
         MRTD.passport_class.check_expiration = 3
         MRTD.passport_class.personal_number = "668035532"
         MRTD.passport_class.check_personal_number = 8
-        MRTD.passport_class.final_check = 4
         incode_string()
-        assert MRTD.passport_string == ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<84"]
+        assert MRTD.passport_string == ["P<GBRTHATCHER<<HILLARY<<<<<<<<<<<<<<<<<<<<<<","8656069044GBR6608073M1601013668035532<<<<<<8"]
         assert len(MRTD.passport_string[0]) == 44
         assert len(MRTD.passport_string[1]) == 44
         MRTD.passport_class.d_type = "P"
@@ -66,9 +65,8 @@ class TestForErrors(unittest.TestCase):
         MRTD.passport_class.check_expiration = 3
         MRTD.passport_class.personal_number = "424533186"
         MRTD.passport_class.check_personal_number = 2
-        MRTD.passport_class.final_check = 8
         incode_string()
-        assert MRTD.passport_string == ["P<GBRWEBER<<DIANE<<<<<<<<<<<<<<<<<<<<<<<<<<<", "2808770437GBR8809117F1601013424533186<<<<<28"]
+        assert MRTD.passport_string == ["P<GBRWEBER<<DIANE<<<<<<<<<<<<<<<<<<<<<<<<<<<", "2808770437GBR8809117F1601013424533186<<<<<<2"]
         assert len(MRTD.passport_string[0]) == 44
         assert len(MRTD.passport_string[1]) == 44
 

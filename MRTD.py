@@ -33,7 +33,7 @@ def decode_string():
                         first_string[4], second_string[0:9], int(second_string[9]),
                         second_string[10:13], second_string[13:19], int(second_string[19]),
                         second_string[20], second_string[21:27], int(second_string[27]),
-                        second_string[28:42],int(second_string[42]), int(second_string[43]))
+                        second_string[28:42],int(second_string[43]))
     passport_class.personal_number = passport_class.personal_number.replace('<','')
 
     # Function that prints all of the passport information
@@ -62,7 +62,7 @@ def incode_string():
             continue
         # This portion has the same 5 '<' characters - ensures the same passport format
         if idx == 14:
-            bottom_string += '<<<<<'
+            bottom_string += '<<<<<<'
         idx+=1
         # Append the elements that are in the bottom string
         bottom_string += str(value)
