@@ -1,3 +1,4 @@
+"""This file takes the raw data and puts the respective fields into the Passport class"""
 import json
 import time
 import unittest

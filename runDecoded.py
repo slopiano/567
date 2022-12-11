@@ -1,3 +1,4 @@
+"""This file takes the data from records_decoded and creates the raw data form"""
 import json
 import time
 import MRTD
